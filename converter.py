@@ -16,9 +16,9 @@ def convert_csv_to_json(csv_file, json_file):
     json_data = []
     for row in data:
         json_row = {}
-        for i in range(len(header)):
+        for key, value in zip(header, row):
             # This is a potential bug: assumes all rows have the same number of columns as the header
-            json_row[header[i]] = row[i]
+            json_row[key] = value
         json_data.append(json_row)
 
     with open(json_file, 'w') as f:
